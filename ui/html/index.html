@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Avanzado de Ban</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="ban-system-container">
+        <div class="header">
+            <h1>Sistema Avanzado de Ban</h1>
+            <button id="close-btn">X</button>
+        </div>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="ban-player">Banear Jugador</button>
+            <button class="tab-btn" data-tab="ban-list">Lista de Bans</button>
+            <button class="tab-btn" data-tab="search">Buscar</button>
+        </div>
+        
+        <div class="tab-content">
+            <!-- Pestaña de Banear Jugador -->
+            <div id="ban-player" class="tab-pane active">
+                <h2>Banear Jugador</h2>
+                <form id="ban-form">
+                    <div class="form-group">
+                        <label for="player-id">ID del Jugador:</label>
+                        <input type="number" id="player-id" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ban-reason">Razón:</label>
+                        <textarea id="ban-reason" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ban-duration">Duración (días, 0 = permanente):</label>
+                        <input type="number" id="ban-duration" value="7" min="0">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Banear Jugador</button>
+                </form>
+                
+                <div id="ban-result" class="result-message"></div>
+            </div>
+            
+            <!-- Pestaña de Lista de Bans -->
+            <div id="ban-list" class="tab-pane">
+                <h2>Lista de Bans</h2>
+                <div class="ban-list-container">
+                    <table id="bans-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Jugador</th>
+                                <th>Admin</th>
+                                <th>Razón</th>
+                                <th>Duración</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los bans se cargarán dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Pestaña de Búsqueda -->
+            <div id="search" class="tab-pane">
+                <h2>Buscar Jugador Baneado</h2>
+                <div class="form-group">
+                    <input type="text" id="search-term" placeholder="Nombre del jugador...">
+                    <button id="search-btn" class="btn-primary">Buscar</button>
+                </div>
+                
+                <div class="search-results">
+                    <table id="search-results-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Jugador</th>
+                                <th>Admin</th>
+                                <th>Razón</th>
+                                <th>Duración</th>
+                                <th>Fecha</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los resultados de búsqueda se cargarán dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
